@@ -1,3 +1,6 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 const Index = () => {
     return (
         <>
@@ -5,6 +8,9 @@ const Index = () => {
                 <h1 className="text-4xl font-bold text-blue-500">
                     Tailwind v3 Working 🚀
                 </h1>
+                <Link to="/add-student" className="ml-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
+                    Add Student
+                </Link>
             </div>
         </>
     );

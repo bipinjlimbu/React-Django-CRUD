@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AddStudent = () => {
     return (
@@ -68,6 +69,9 @@ const AddStudent = () => {
                     </div>
 
                     <div className="flex items-center justify-end space-x-4 pt-4 border-t border-gray-100">
+                        <Link to="/" className="px-6 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors">
+                            Cancel
+                        </Link>
                         <button
                             type="button"
                             className="px-6 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors"
