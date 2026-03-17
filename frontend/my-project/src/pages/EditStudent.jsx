@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const EditStudent = () => {
+    const student_id = useParams().student_id;
     const redirect = useNavigate();
     const [studentData, setStudentData] = useState({
         name: '',
@@ -17,12 +18,14 @@ const EditStudent = () => {
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/api/students/${student_id}/`)
             .then(response => {
-                setStudentData(response.data);
+                setStudentData(response.data.data);
             })
             .catch(error => {
                 console.error('Error fetching student data:', error);
             });
     }, []);
+
+    console.log(studentData);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
