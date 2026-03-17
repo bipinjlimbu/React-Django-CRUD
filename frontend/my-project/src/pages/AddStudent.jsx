@@ -1,7 +1,40 @@
-import React from 'react';
+import { useState, useEffect, use } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const AddStudent = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        roll: '',
+        faculty: '',
+        address: '',
+        phone: '',
+        email: '',
+        age: ''
+    });
+
+    console.log(formData);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post('http://127.0.0.1:8000/api/students/', formData)
+            .then(response => {
+                console.log('Success:', response.data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    };
+
+
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
@@ -16,7 +49,22 @@ const AddStudent = () => {
                             <label className="block text-sm font-semibold text-gray-700 mb-1">Full Name</label>
                             <input
                                 type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
                                 placeholder="e.g. Alex Johnson"
+                                className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                            />
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <label className="block text-sm font-semibold text-gray-700 mb-1">Email Address</label>
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="e.g. alex.johnson@example.com"
                                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                             />
                         </div>
@@ -25,6 +73,9 @@ const AddStudent = () => {
                             <label className="block text-sm font-semibold text-gray-700 mb-1">Roll Number</label>
                             <input
                                 type="text"
+                                name="roll"
+                                value={formData.roll}
+                                onChange={handleChange}
                                 placeholder="2024-001"
                                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                             />
@@ -32,7 +83,12 @@ const AddStudent = () => {
 
                         <div>
                             <label className="block text-sm font-semibold text-gray-700 mb-1">Faculty</label>
-                            <select className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
+                            <select
+                                name="faculty"
+                                value={formData.faculty}
+                                onChange={handleChange}
+                                className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                            >
                                 <option value="">Select Department</option>
                                 <option value="cs">Computer Science</option>
                                 <option value="it">Information Technology</option>
@@ -44,6 +100,9 @@ const AddStudent = () => {
                             <label className="block text-sm font-semibold text-gray-700 mb-1">Phone Number</label>
                             <input
                                 type="tel"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
                                 placeholder="+1 234 567 890"
                                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                             />
@@ -53,6 +112,9 @@ const AddStudent = () => {
                             <label className="block text-sm font-semibold text-gray-700 mb-1">Age</label>
                             <input
                                 type="number"
+                                name="age"
+                                value={formData.age}
+                                onChange={handleChange}
                                 placeholder="20"
                                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                             />
@@ -62,6 +124,9 @@ const AddStudent = () => {
                             <label className="block text-sm font-semibold text-gray-700 mb-1">Address</label>
                             <textarea
                                 rows="3"
+                                name="address"
+                                value={formData.address}
+                                onChange={handleChange}
                                 placeholder="Street address, City, Zip Code"
                                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                             ></textarea>
@@ -80,6 +145,7 @@ const AddStudent = () => {
                         </button>
                         <button
                             type="submit"
+                            onClick={handleSubmit}
                             className="px-8 py-2.5 bg-indigo-600 text-white font-bold rounded-lg shadow-md hover:bg-indigo-700 active:transform active:scale-95 transition-all"
                         >
                             Register Student
