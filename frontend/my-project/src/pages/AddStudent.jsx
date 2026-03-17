@@ -1,8 +1,10 @@
 import { useState, useEffect, use } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const AddStudent = () => {
+    const redirect = useNavigate();
+
     const [formData, setFormData] = useState({
         name: '',
         roll: '',
@@ -28,10 +30,15 @@ const AddStudent = () => {
         axios.post('http://127.0.0.1:8000/api/students/', formData)
             .then(response => {
                 console.log('Success:', response.data);
+                alert('Student Registered Successfully!');
+                redirect('/');
             })
             .catch(error => {
                 console.error('Error:', error);
-            });
+                alert('Student Registration Failed');
+                redirect('/add-student');
+            }
+            );
     };
 
 
