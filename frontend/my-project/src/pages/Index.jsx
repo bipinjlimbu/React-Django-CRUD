@@ -1,6 +1,21 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
+    const [students, setStudents] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/api/students/')
+            .then(response => {
+                setStudents(response.data.data);
+            })
+            .catch(error => {
+                console.error('Error fetching students:', error);
+            });
+    }, []);
+
+    console.log(students);
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
