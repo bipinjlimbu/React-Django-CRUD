@@ -59,7 +59,7 @@ const AddStudent = () => {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                placeholder="e.g. Alex Johnson"
+                                placeholder="Enter Full Name"
                                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                             />
                         </div>
@@ -71,7 +71,7 @@ const AddStudent = () => {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                placeholder="e.g. alex.johnson@example.com"
+                                placeholder="Enter Email Address"
                                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                             />
                         </div>
@@ -83,7 +83,7 @@ const AddStudent = () => {
                                 name="roll"
                                 value={formData.roll}
                                 onChange={handleChange}
-                                placeholder="2024-001"
+                                placeholder="Enter Roll Number"
                                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                             />
                         </div>
@@ -97,9 +97,9 @@ const AddStudent = () => {
                                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                             >
                                 <option value="">Select Department</option>
-                                <option value="cs">Computer Science</option>
-                                <option value="it">Information Technology</option>
-                                <option value="eng">Engineering</option>
+                                <option value="BCA">BCA</option>
+                                <option value="CSIT">CSIT</option>
+                                <option value="BBA">BBA</option>
                             </select>
                         </div>
 
@@ -110,7 +110,7 @@ const AddStudent = () => {
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleChange}
-                                placeholder="+1 234 567 890"
+                                placeholder="Enter Phone Number"
                                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                             />
                         </div>
@@ -122,7 +122,7 @@ const AddStudent = () => {
                                 name="age"
                                 value={formData.age}
                                 onChange={handleChange}
-                                placeholder="20"
+                                placeholder="Enter Age"
                                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                             />
                         </div>
@@ -134,7 +134,7 @@ const AddStudent = () => {
                                 name="address"
                                 value={formData.address}
                                 onChange={handleChange}
-                                placeholder="Street address, City, Zip Code"
+                                placeholder="Enter Address"
                                 className="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
                             ></textarea>
                         </div>
