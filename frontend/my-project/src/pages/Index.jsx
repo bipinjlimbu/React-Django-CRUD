@@ -49,51 +49,30 @@ const Index = () => {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-50">
-                                <tr className="hover:bg-gray-50/80 transition-all group">
-                                    <td className="px-8 py-6 font-mono text-sm font-bold text-gray-400 group-hover:text-indigo-600">#2024-001</td>
-                                    <td className="px-8 py-6">
-                                        <div className="flex flex-col">
-                                            <span className="text-sm font-bold text-gray-900">Arjun Sharma</span>
-                                            <span className="text-xs text-gray-400">arjun.sharma@email.com</span>
-                                            <span className="text-xs font-medium text-gray-500 mt-1">+977 9841-XXXXXX</span>
-                                        </div>
-                                    </td>
-                                    <td className="px-8 py-6">
-                                        <span className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-bold border border-blue-100">
-                                            BCA
-                                        </span>
-                                    </td>
-                                    <td className="px-8 py-6 text-sm text-gray-500 italic">Kathmandu, Nepal</td>
-                                    <td className="px-8 py-6">
-                                        <div className="flex justify-center space-x-3">
-                                            <button className="p-2 bg-gray-50 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all">Edit</button>
-                                            <button className="p-2 bg-gray-50 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">Delete</button>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr className="hover:bg-gray-50/80 transition-all group">
-                                    <td className="px-8 py-6 font-mono text-sm font-bold text-gray-400 group-hover:text-indigo-600">#2024-002</td>
-                                    <td className="px-8 py-6">
-                                        <div className="flex flex-col">
-                                            <span className="text-sm font-bold text-gray-900">Sita Thapa</span>
-                                            <span className="text-xs text-gray-400">sita.thapa@email.com</span>
-                                            <span className="text-xs font-medium text-gray-500 mt-1">+977 9803-XXXXXX</span>
-                                        </div>
-                                    </td>
-                                    <td className="px-8 py-6">
-                                        <span className="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-bold border border-purple-100">
-                                            CSIT
-                                        </span>
-                                    </td>
-                                    <td className="px-8 py-6 text-sm text-gray-500 italic">Pokhara, Nepal</td>
-                                    <td className="px-8 py-6">
-                                        <div className="flex justify-center space-x-3">
-                                            <button className="p-2 bg-gray-50 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all">Edit</button>
-                                            <button className="p-2 bg-gray-50 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">Delete</button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                {students.map((student) => (
+                                    <tr className="hover:bg-gray-50/80 transition-all group">
+                                        <td className="px-8 py-6 font-mono text-sm font-bold text-gray-400 group-hover:text-indigo-600">{student.roll}</td>
+                                        <td className="px-8 py-6">
+                                            <div className="flex flex-col">
+                                                <span className="text-sm font-bold text-gray-900">{student.name}</span>
+                                                <span className="text-xs text-gray-400">{student.email}</span>
+                                                <span className="text-xs font-medium text-gray-500 mt-1">{student.phone}</span>
+                                            </div>
+                                        </td>
+                                        <td className="px-8 py-6">
+                                            <span className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-bold border border-blue-100">
+                                                {student.faculty}
+                                            </span>
+                                        </td>
+                                        <td className="px-8 py-6 text-sm text-gray-500 italic">{student.address}</td>
+                                        <td className="px-8 py-6">
+                                            <div className="flex justify-center space-x-3">
+                                                <button className="p-2 bg-gray-50 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all">Edit</button>
+                                                <button className="p-2 bg-gray-50 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">Delete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>
