@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css'
 import Index from './pages/Index';
 import AddStudent from './pages/AddStudent';
+import EditStudent from './pages/EditStudent';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -11,6 +12,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/add-student" element={<AddStudent />} />
+        <Route path="/edit-student/:student_id" element={<EditStudent />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
