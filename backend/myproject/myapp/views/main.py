@@ -28,3 +28,15 @@ def student_detail_view(request, student_id):
             return Response({'data': serializer.data}, status=status.HTTP_200_OK)
         except Student.DoesNotExist:
             return Response({'Error': 'Student not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+    elif request.method == 'PUT':
+        try:
+            student = Student.objects.get(id=student_id)
+            serializer = StudentSerializer(student, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({'Success': 'Student updated successfully','data': serializer.data}, status=status.HTTP_200_OK)
+            else:
+                return Response({'Error': 'Failed to update student','errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        except Student.DoesNotExist:
+            return Response({'Error': 'Student not found'}, status=status.HTTP_404_NOT_FOUND)
