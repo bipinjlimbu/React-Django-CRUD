@@ -18,3 +18,13 @@ def student_view(request):
             return Response({'Success': 'Student created successfully','data': serializer.data}, status=status.HTTP_201_CREATED)
         else:
             return Response({'Error': 'Failed to create student','errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        
+@api_view(['GET', 'PUT', 'DELETE'])
+def student_detail_view(request, student_id):
+    if request.method == 'GET':
+        try:
+            student = Student.objects.get(id=student_id)
+            serializer = StudentSerializer(student)
+            return Response({'data': serializer.data}, status=status.HTTP_200_OK)
+        except Student.DoesNotExist:
+            return Response({'Error': 'Student not found'}, status=status.HTTP_404_NOT_FOUND)
