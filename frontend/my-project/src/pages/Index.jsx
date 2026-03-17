@@ -15,11 +15,24 @@ const Index = () => {
             });
     }, []);
 
+    const handleDelete = (student_id) => {
+        if (window.confirm('Are you sure you want to delete this student?')) {
+            axios.delete(`http://127.0.0.1:8000/api/students/${student_id}/`)
+                .then(response => {
+                    setStudents(students.filter(student => student.id !== student_id));
+                    alert('Student deleted successfully!');
+                })
+                .catch(error => {
+                    console.error('Error deleting student:', error);
+                    alert('Failed to delete student.');
+                });
+        }
+    };
+
     console.log(students);
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
-                {/* Top Header Section */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10 gap-4">
                     <div>
                         <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">Student Records</h1>
@@ -37,7 +50,6 @@ const Index = () => {
                     </Link>
                 </div>
 
-                {/* Main Table Container */}
                 <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="w-full text-left">
@@ -91,7 +103,7 @@ const Index = () => {
                                                     </svg>
                                                     Edit
                                                 </a>
-                                                <button
+                                                <button onClick={() => handleDelete(student.id)}
                                                     className="inline-flex items-center px-4 py-2 bg-red-500 hover:bg-red-600 text-white text-xs font-bold rounded-lg transition-colors shadow-sm"
                                                 >
                                                     <svg className="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,7 +119,6 @@ const Index = () => {
                         </table>
                     </div>
 
-                    {/* Empty State */}
                     {students.length === 0 && (
                         <div className="py-20 text-center">
                             <p className="text-gray-400 font-medium">No students found in the database.</p>
