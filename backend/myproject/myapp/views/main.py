@@ -40,3 +40,11 @@ def student_detail_view(request, student_id):
                 return Response({'Error': 'Failed to update student','errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         except Student.DoesNotExist:
             return Response({'Error': 'Student not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+    elif request.method == 'DELETE':
+        try:
+            student = Student.objects.get(id=student_id)
+            student.delete()
+            return Response({'Success': 'Student deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+        except Student.DoesNotExist:
+            return Response({'Error': 'Student not found'}, status=status.HTTP_404_NOT_FOUND)
