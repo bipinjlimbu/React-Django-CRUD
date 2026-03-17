@@ -7,7 +7,7 @@ from rest_framework import status
 @api_view(['GET', 'POST'])
 def student_view(request):
     if request.method == 'GET':
-        students = Student.objects.all()
+        students = Student.objects.all().order_by('roll')
         serializer = StudentSerializer(students, many=True)
         return Response({'data': serializer.data}, status=status.HTTP_200_OK)
 
