@@ -39,11 +39,13 @@ const EditStudent = () => {
         e.preventDefault();
         axios.put(`http://127.0.0.1:8000/api/students/${student_id}/`, studentData)
             .then(response => {
-                console.log('Student updated successfully:', response.data);
-                redirect('/students');
+                console.log('Success:', response.data);
+                alert('Student Details Updated Successfully!');
+                redirect('/');
             })
             .catch(error => {
-                console.error('Error updating student:', error);
+                console.error('Error:', error);
+                alert('Failed to Update Student Details');
             });
     };
 
