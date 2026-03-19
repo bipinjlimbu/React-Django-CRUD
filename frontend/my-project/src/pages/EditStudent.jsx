@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const EditStudent = () => {
-    const student_id = useParams().student_id;
+    const { student_id } = useParams();
     const redirect = useNavigate();
     const [studentData, setStudentData] = useState({
         name: '',
