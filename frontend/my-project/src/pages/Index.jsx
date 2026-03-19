@@ -59,6 +59,7 @@ const Index = () => {
                                     <th className="px-6 py-5 text-xs font-bold text-gray-500 uppercase tracking-widest">Full Name</th>
                                     <th className="px-6 py-5 text-xs font-bold text-gray-500 uppercase tracking-widest">Email Address</th>
                                     <th className="px-6 py-5 text-xs font-bold text-gray-500 uppercase tracking-widest">Phone</th>
+                                    <th className="px-6 py-5 text-xs font-bold text-gray-500 uppercase tracking-widest">Address</th>
                                     <th className="px-6 py-5 text-xs font-bold text-gray-500 uppercase tracking-widest">Faculty</th>
                                     <th className="px-6 py-5 text-xs font-bold text-gray-500 uppercase tracking-widest text-center">Actions</th>
                                 </tr>
@@ -87,6 +88,9 @@ const Index = () => {
                                                 </svg>
                                                 {student.phone}
                                             </div>
+                                        </td>
+                                        <td className="px-6 py-6 text-sm text-gray-600">
+                                            {student.address}
                                         </td>
                                         <td className="px-6 py-6">
                                             <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg text-xs font-bold uppercase tracking-wider">
